@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Ashan De Silva" />
 
 
-<meta name="date" content="2026-01-10" />
+<meta name="date" content="2026-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -85,6 +85,7 @@ set in the _output.yml file.</p>" />
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#what-is-algberic-topolgy"><i class="fa fa-check"></i><b>1.0.1</b> What is Algberic topolgy?</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-basic-defnitions"><i class="fa fa-check"></i><b>1.1</b> Some Basic defnitions</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="hj.html"><a href="hj.html"><i class="fa fa-check"></i><b>2</b> hj</a></li>
 <li class="divider"></li>
@@ -110,7 +111,7 @@ set in the _output.yml file.</p>" />
 <div id="header">
 <h1 class="title">Algbric Topogy</h1>
 <p class="author"><em>Ashan De Silva</em></p>
-<p class="date"><em>2026-01-10</em></p>
+<p class="date"><em>2026-01-12</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -120,7 +121,7 @@ set in the _output.yml file.</p>" />
 Roughly it’s about tools/methods connecting <strong>algebra</strong> and <strong>topology</strong>.</p>
 <p><img src="fig/fig%202.png" /></p>
 <p>The “<em>bridge</em>” is <strong>algebraic topology</strong>.</p>
-<p>In order to be useful, the associations <span class="math display">\[ X \leftsquigarrow G(X) \quad \text{and} \quad f \leftsquigarrow \varphi_f \]</span> ought to satisfy some properties.</p>
+<p>In order to be useful, the associations <span class="math display">\[ X  ⇝  G(X) \quad \text{and} \quad f  ⇝  \varphi_f \]</span> ought to satisfy some properties.</p>
 <table>
 <colgroup>
 <col width="9%" />
@@ -136,16 +137,243 @@ Roughly it’s about tools/methods connecting <strong>algebra</strong> and <stro
 <tr class="odd">
 <td align="left"><strong>Identity</strong><br />
 <strong>Preservation</strong></td>
-<td align="left"><span class="math inline">\(\mathrm{id}_X : X \to X \;\mapsto\; \mathrm{id}_{G(X)} : G(X) \to G(X)\)</span></td>
+<td align="left"><span class="math inline">\(\mathrm{id}_X : X \to X \; ⇝ \; \mathrm{id}_{G(X)} : G(X) \to G(X)\)</span></td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Composition</strong><br />
 <strong>Compatibility</strong></td>
-<td align="left">If <span class="math inline">\(f : X \to Y\)</span> and <span class="math inline">\(g : Y \to Z\)</span>, then <span class="math inline">\((g \circ f) : X \to Z \;\mapsto\; \varphi_g \circ \varphi_f : G(X) \to G(Z)\)</span></td>
+<td align="left">If <span class="math inline">\(f : X \to Y\)</span> and <span class="math inline">\(g : Y \to Z\)</span>, then <span class="math inline">\((g \circ f) : X \to Z \; ⇝ \; \varphi_{g \circ f}=\varphi_g \circ \varphi_f : G(X) \to G(Z)\)</span> <img src="fig/fig%203.png" /></td>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\leftsquigarrow\]</span></p>
+<p>In somewhat “<em>fancy</em>” language, we are asking that the correspondence above be <strong>functor</strong>
+So, what could we do with all this?</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-1" class="example"><strong>Example 1.1  (Classical Problem) </strong></span>Let <span class="math inline">\(S^1 \subset D^2\)</span> be the unit circle inside the unit disk in <span class="math inline">\(\mathbb{R}^2\)</span>.Suppose we are given a continuous map <span class="math inline">\(f : S^1 \to S^1.\)</span> <strong>Does there exist a continuous extension <span class="math inline">\(g : D^2 \to S^1\)</span> such that <span class="math inline">\(g(z) = f(z)\)</span> for all <span class="math inline">\(z \in S^1\)</span>?</strong></p>
+</div>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; S^1 \xrightarrow{f} S^1 \\
+&amp; \downarrow i \quad \nearrow \mathbf{?~\exists} ~g \\
+&amp; D^2
+\end{aligned}
+\]</span></p>
+<p>Imagine we had our algebraic topology tools on hand.
+If there exists a continuous map <span class="math inline">\(g : D^2 \rightarrow S^1\)</span> such that <span class="math inline">\(g \circ j = f,\)</span> then the induced homomorphism satisfies<br />
+<span class="math display">\[ \varphi_f = \varphi_{g \circ j} = \varphi_g \circ \varphi_j. \]</span>
+That is, the existence of <span class="math inline">\(g\)</span> would imply the existence of a homomorphism <span class="math inline">\(\varphi_g\)</span> such that the following diagram commutes:</p>
+<div class="proof">
+<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span><span class="math display">\[
+\begin{aligned}
+&amp; G(S^1) \xrightarrow{\varphi_f} G(S^1) \\
+&amp; \downarrow \varphi_j \quad \nearrow \varphi_g \\
+&amp; G(D^2)
+\end{aligned}
+\]</span></p>
+<p>“Commutes” mean <span class="math inline">\(\varphi_f = \varphi_g \circ \varphi_j.\)</span></p>
+<p>Suppose we know,</p>
+<ul>
+<li><span class="math inline">\(G(S^1) \cong \mathbb{Z}\)</span></li>
+<li><span class="math inline">\(G(D^2) \cong \{ e \}\)</span> (the trivial group)</li>
+<li><span class="math inline">\(\varphi_f\)</span> is a non-trivial homomorphism, i.e., <span class="math inline">\(\varphi_f(a) \neq 0 \text{ for all } a \in G(S^1)\)</span> is a generator.</li>
+</ul>
+<p>This yields a contradiction, since any composition through the trivial group must be trivial. Therefore, <strong>no such map <span class="math inline">\(g\)</span> can exist</strong>.</p>
+</div>
+<p><strong>Definition</strong>: Invaraince (<em>This is not a formal definition</em>)
+Suppose <span class="math inline">\(G\)</span> is a correspondence of the kind we’re looking for:
+<span class="math display">\[\begin{cases}
+X  &amp;⇝  G(X) \\
+X \xrightarrow{f} Y  &amp;⇝  G(X) \xrightarrow{G(f)} G(Y)
+\end{cases}\]</span>
+such that:<span class="math display">\[G(\mathrm{id}_X) = \mathrm{id}_{G(X)}, \quad G(f \circ g) = G(f) \circ G(g).\]</span></p>
+<p>Then observe that it’s <strong>automatic</strong> that</p>
+<p><strong>Result</strong> :If <span class="math inline">\(f: X \to Y\)</span> is a homeomorphism, then<br />
+<span class="math inline">\(G(f): G(X) \to G(Y)\)</span> is an isomorphism.</p>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span></p>
+<ul>
+<li><em>Homeomorphism</em>: A function <span class="math inline">\({\displaystyle f:X\to Y}\)</span> is a homeomorphism if
+<ul>
+<li><span class="math inline">\({\displaystyle f}\)</span> is a bijection (one-to-one and onto),</li>
+<li><span class="math inline">\({\displaystyle f}\)</span> is continuous,</li>
+<li><span class="math inline">\({\displaystyle f^{-1}}\)</span> is continuous</li>
+</ul></li>
+<li>Isomorphism
+<ul>
+<li>Hormphism</li>
+<li>Bijective</li>
+</ul></li>
+</ul>
+<p>Let <span class="math inline">\(f^{-1}: Y \to X\)</span> be the inverse of <span class="math inline">\(f\)</span>. Then <span class="math inline">\(f^{-1} \circ f = \mathrm{id}_X\)</span>. So,</p>
+<p><span class="math display">\[\begin{align*}
+\mathrm{id}_{G(X)}
+  &amp;= G(\mathrm{id}_X)
+   = G(f^{-1} \circ f)
+   = G(f^{-1}) \circ G(f) \\
+\mathrm{id}_{G(Y)}
+  &amp;= G(\mathrm{id}_Y)
+   = G(f \circ f^{-1})
+   = G(f) \circ G(f^{-1})
+\end{align*}\]</span></p>
+<p>Hence,<span class="math inline">\(G(f^{-1}) = G(f)^{-1}\)</span>.
+Therefore, homeomorphic spaces <span class="math inline">\(X, Y\)</span> yield isomorphic groups,<span class="math inline">\(G(X) \cong G(Y)\)</span></p>
+<p><em>(We say <span class="math inline">\(G(X)\)</span> is an <strong>invariant</strong> of <span class="math inline">\(X\)</span>.)</em></p>
+</div>
+<p><span class="math display">\[
+\text{A necessary condition for two spaces } X, Y \text{ to be homeomorphic is that } G(X) \cong G(Y).
+\]</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-3" class="remark"><em>Remark</em>. </span>We’ll see examples showing this is <strong>NOT</strong> sufficient.</p>
+</div>
+</div>
+<div id="some-basic-defnitions" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Some Basic defnitions<a href="index.html#some-basic-defnitions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:unnamed-chunk-5" class="definition"><strong>Definition 1.1  (Homotopy of Maps) </strong></span></p>
+<table style="border-collapse: collapse;">
+<tr style="border: none;">
+<td style="vertical-align: top; border: none; padding-right: 20px;">
+<p>Let <span class="math inline">\(X, Y\)</span> be topological spaces, and let <span class="math inline">\(f, g : X \to Y\)</span> be continuous maps.<br />
+We say that <strong><span class="math inline">\(f\)</span> is homotopic to <span class="math inline">\(g\)</span></strong>, and write <span class="math inline">\(f \sim g\)</span>, if there exists a continuous map<br />
+<span class="math display">\[
+H : X \times I \to Y
+\]</span>
+such that
+<span class="math display">\[
+H(x,0) = f(x), \qquad H(x,1) = g(x) \quad \text{for all } x \in X.
+\]</span></p>
+<p>Intuitively, the map <span class="math inline">\(H\)</span> defines a continuous deformation of <span class="math inline">\(f\)</span> into <span class="math inline">\(g\)</span> over time <span class="math inline">\(t \in [0,1]\)</span>.</p>
+</td>
+<td style="vertical-align: top; border: none;">
+<p><img src="fig/fig%204.png"></p>
+</td>
+</tr>
+</table>
+<p><strong>Notations</strong>:</p>
+<ul>
+<li>We often write <span class="math inline">\(H_t : X \to Y\)</span> for the slice <span class="math inline">\(H(\cdot,t)\)</span>, so that<br />
+<span class="math inline">\(H_0 = f, \quad H_1 = g.\)</span></li>
+<li>Sometimes we write <span class="math inline">\(f \overset{H}{\sim} g\)</span> to indicate the specific homotopy <span class="math inline">\(H\)</span>.</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unnamed-chunk-6" class="example"><strong>Example 1.2  </strong></span></p>
+<table style="border-collapse: collapse;">
+<tr style="border: none;">
+<td style="vertical-align: top; border: none; padding-right: 20px;">
+<p>Let <span class="math inline">\(f, g : X \to \mathbb{R}^n\)</span> be any continuous functions.<br />
+Then <span class="math inline">\(f \sim g\)</span>, because we can define a homotopy:</p>
+<p><span class="math display">\[
+H(x,t) = t\, g(x) + (1 - t)\, f(x)
+\]</span></p>
+<p>This map <span class="math inline">\(H : X \times I \to \mathbb{R}^n\)</span> is continuous<br />
+(since vector space operations in <span class="math inline">\(\mathbb{R}^n\)</span> are continuous),<br />
+and satisfies:</p>
+<p><span class="math display">\[
+H_0 = f, \qquad H_1 = g
+\]</span></p>
+</td>
+<td style="vertical-align: top; border: none;">
+<p><img src="fig/fig%206.png"></p>
+</td>
+</tr>
+</table>
+</div>
+<div class="definition">
+<p><span id="def:unnamed-chunk-7" class="definition"><strong>Definition 1.2  </strong></span>Let <span class="math inline">\(A \subset X\)</span>, and suppose <span class="math inline">\(f|_A = g|_A\)</span>, i.e., <span class="math inline">\(f(a) = g(a)\)</span> for all <span class="math inline">\(a \in A\)</span>.<br />
+We say that <strong><span class="math inline">\(f\)</span> is homotopic to <span class="math inline">\(g\)</span> relative to <span class="math inline">\(A\)</span></strong> if there exists a homotopy</p>
+<p><span class="math display">\[
+H : X \times I \to Y
+\]</span></p>
+<p>such that</p>
+<p><span class="math display">\[
+H(a,t) = f(a) = g(a) \quad \text{for all } a \in A, \text{ and all } t \in [0,1].
+\]</span></p>
+</div>
+<p><img src="fig/fig%205.png" /></p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-8" class="example"><strong>Example 1.3  </strong></span></p>
+<table style="border-collapse: collapse;">
+<tr style="border: none;">
+<td style="vertical-align: top; border: none; padding-right: 15px;">
+<p>Let <span class="math inline">\(f, g : I \to \mathbb{R}^2\)</span> be continuous maps (paths), as illustrated.</p>
+<p>Then the interpolation homotopy is a homotopy from <span class="math inline">\(f\)</span> to <span class="math inline">\(g\)</span>, and it satisfies</p>
+<p><span class="math display">\[
+H(0,t) = f(0) = g(0), \qquad
+H(1,t) = f(1) = g(1)
+\]</span></p>
+<p>for all <span class="math inline">\(t \in [0,1]\)</span>.</p>
+<p>Hence, <span class="math inline">\(H\)</span> is a <strong>homotopy relative to the endpoints</strong><br />
+<span class="math inline">\(\{0,1\} \subset I\)</span>.</p>
+</td>
+<td style="vertical-align: top; border: none;">
+<p><img src="fig/fig%207.gif"></p>
+</td>
+</tr>
+</table>
+</div>
+<p><strong>Notation</strong>:</p>
+<p>When <span class="math inline">\(f\)</span> is homotopic to <span class="math inline">\(g\)</span> <strong>relative to a subset</strong> <span class="math inline">\(A \subset X\)</span>,<br />
+we write:<span class="math inline">\(f \sim g \text{ rel } A\)</span></p>
+<p>This means there exists a homotopy <span class="math inline">\(H : X \times I \to Y\)</span> such that</p>
+<p><span class="math display">\[
+H(a,t) = f(a) = g(a) \quad \text{for all } a \in A, \, t \in [0,1].
+\]</span></p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-9" class="example"><strong>Example 1.4  </strong></span>Let <span class="math inline">\(f, g, h : X \to Y\)</span> be continuous maps between topological spaces.<br />
+We show that the relation <span class="math inline">\(f \sim g\)</span> (homotopy) satisfies reflexivity, symmetry, and transitivity.</p>
+<ol style="list-style-type: decimal">
+<li><p>Reflexivity
+<span class="math display">\[
+f \sim f \quad \text{via } H(x,t) = f(x) \text{ for all } t \in [0,1].
+\]</span>
+This is a constant homotopy.</p></li>
+<li><p>Symmetry
+Suppose <span class="math inline">\(f \sim g\)</span> via homotopy <span class="math inline">\(H(x,t)\)</span>.<br />
+Then define:</p></li>
+</ol>
+<p><span class="math display">\[
+G(x,t) = H(x,1 - t)
+\]</span></p>
+<p>This reverses the deformation and gives a homotopy from <span class="math inline">\(g\)</span> to <span class="math inline">\(f\)</span>, so <span class="math inline">\(g \sim f\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Transitivity
+<table style="border-collapse: collapse;">
+<tr style="border: none;">
+<td style="vertical-align: top; border: none; padding-right: 12px;"></li>
+</ol>
+<p>Suppose <span class="math inline">\(f \sim g\)</span> via <span class="math inline">\(F(x,t)\)</span>, and <span class="math inline">\(g \sim h\)</span> via <span class="math inline">\(G(x,t)\)</span>.<br />
+Define a new homotopy <span class="math inline">\(H : X \times I \to Y\)</span> by:</p>
+<p><span class="math display">\[
+H(x,t) =
+\begin{cases}
+F(x,2t) &amp; \text{if } 0 \le t \le \tfrac12, \\
+G(x,2t - 1) &amp; \text{if } \tfrac12 \le t \le 1.
+\end{cases}
+\]</span></p>
+</td>
+<td style="vertical-align: top; border: none;">
+<p><img src="fig/fig%207.png"></p>
+</td>
+</tr>
+</table>
+<p>Then:</p>
+<p><span class="math display">\[
+H(x,0) = F(x,0) = f(x), \qquad
+H(x,1) = G(x,1) = h(x).
+\]</span></p>
+<p>By the pasting lemma (Lemma <a href="index.html#lem:PasteLemma">1.1</a>),<br />
+<span class="math inline">\(F(x,1) = g(x) = G(x,0)\)</span>, so <span class="math inline">\(H\)</span> is continuous.<br />
+Thus, <span class="math inline">\(f \sim h\)</span>.</p>
+</div>
+<p>Let me recall pasting lemma, if you can not remember,</p>
+<div class="lemma">
+<p><span id="lem:PasteLemma" class="lemma"><strong>Lemma 1.1  (Pasting Lemma) </strong></span>Let <span class="math inline">\(X, Y\)</span> be both closed (or both open) subsets of a topological space <span class="math inline">\(A\)</span> such that<br />
+<span class="math display">\[
+A = X \cup Y,
+\]</span>
+and let <span class="math inline">\(B\)</span> be a topological space. If <span class="math inline">\(f : A \to B\)</span> is continuous when restricted to both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then <span class="math inline">\(f\)</span> is continuous.</p>
+</div>
 
 </div>
 </div>
