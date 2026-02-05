@@ -61,6 +61,7 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+\usepackage{svg}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -80,7 +81,7 @@
 
 \title{Algbric Topogy}
 \author{Ashan De Silva}
-\date{2026-01-25}
+\date{2026-02-05}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -495,11 +496,22 @@ where \(*\) denotes concatenation and the constant path acts as identity.
 
 We picture these paths by the diagrams,
 
-\begin{tikzpicture}
-  \draw[thick,->] (0,0) -- (2,0) node[right] {$x$};
-  \draw[thick,->] (0,0) -- (0,2) node[above] {$y$};
-  \draw[blue, thick] (0,0) -- (1.5,1);
-\end{tikzpicture}
+\end{proof}
+
+\pandocbounded{\includesvg[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-15-1.svg}}
+
+The diagrams can be used to obtain the algebraic descriptions of the paths in
+question quite easily. For example, consider \((\alpha * \beta) * \gamma\). When
+\tfrac14 \le t \textless{} \tfrac12\$ we use \(\beta\) and compose it with a linear function
+that changes the interval \([\tfrac14, \tfrac12]\) to \([0,1]\), namely
+
+\[
+t \mapsto 4t - 1.
+\]
+
+In fact, any continuous function from \([\tfrac14, \tfrac12]\) to \([0,1]\) which
+sends \(\tfrac14\) to \(0\) and \(\tfrac12\) to \(1\) will do ,
+but it is usually easiest to choose a linear function.
 
 \begin{itemize}
 \tightlist
@@ -508,7 +520,7 @@ We picture these paths by the diagrams,
   We need to show \(c_{x_0}\sigma\sim\sigma\) for all \(\sigma \in \Pi_1(X,x_0)\)\\
 \end{itemize}
 
-\end{proof}
+```
 
 \chapter{hj}\label{hj}
 

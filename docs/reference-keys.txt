@@ -5,6 +5,9 @@ def:unnamed-chunk-7
 exm:unnamed-chunk-8
 exm:unnamed-chunk-9
 lem:PasteLemma
+def:unnamed-chunk-10
+def:unnamed-chunk-11
+thm:unnamed-chunk-13
 introduction
 what-is-algberic-topolgy
 some-basic-defnitions

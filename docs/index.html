@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Ashan De Silva" />
 
 
-<meta name="date" content="2026-01-12" />
+<meta name="date" content="2026-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -111,7 +111,7 @@ set in the _output.yml file.</p>" />
 <div id="header">
 <h1 class="title">Algbric Topogy</h1>
 <p class="author"><em>Ashan De Silva</em></p>
-<p class="date"><em>2026-01-12</em></p>
+<p class="date"><em>2026-02-05</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -374,6 +374,82 @@ A = X \cup Y,
 \]</span>
 and let <span class="math inline">\(B\)</span> be a topological space. If <span class="math inline">\(f : A \to B\)</span> is continuous when restricted to both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then <span class="math inline">\(f\)</span> is continuous.</p>
 </div>
+<div class="definition">
+<p><span id="def:unnamed-chunk-10" class="definition"><strong>Definition 1.3  </strong></span>Let <span class="math inline">\(X\)</span> b∈topological space and <span class="math inline">\(x_0\in X\)</span>. Let <span class="math inline">\(\Pi_1(X,x_0)\)</span> denote the set of homotpy equivalnce classes of loops based at <span class="math inline">\(x_0\)</span>. (i.e.: <span class="math inline">\(\sigma I \rightarrow X, \sigma(0)=sigma(1)=x_0\)</span>, where homotopy relative to <span class="math inline">\(\{0,1\}\)</span>)</p>
+</div>
+<div class="definition">
+<p><span id="def:unnamed-chunk-11" class="definition"><strong>Definition 1.4  </strong></span>Let <span class="math inline">\(X\)</span> be a topological space, and let <span class="math inline">\(x_0 \in X\)</span>.
+Define <span class="math inline">\(\pi_1(X, x_0)\)</span> to be the set of homotopy equivalence classes of loops based at <span class="math inline">\(x_0\)</span> (i.e., maps
+<span class="math inline">\(\alpha : I \to X \quad \text{with } \alpha(0) = \alpha(1) = x_0,\)</span>
+where homotopy is taken <strong>rel</strong> <span class="math inline">\(\{0,1\}\)</span>).</p>
+</div>
+<p>i.e.:
+<span class="math display">\[\begin{align*}
+\Pi(X,x_0) &amp;= \left\{ [\sigma]: \sigma \text{ is a loop at }x_0\right\}, \text{ where. }\\
+&amp; [\sigma]=\left\{\alpha: \sigma \text{ is a loop at }x_0 \text{ and } \sigma \sim \alpha\right\}
+\end{align*}\]</span></p>
+<center>
+<img src="fig/fig8.png" style="width:30.0%" />
+</center>
+<div class="remark">
+<p><span id="unlabeled-div-4" class="remark"><em>Remark</em>. </span>The previous lemma shows that concatenation gives a well-defined binary operation on <span class="math inline">\(\pi_1(X, x_0)\)</span>
+<span class="math display">\[
+[\sigma][\tau] \mapsto [\sigma * \tau],
+\]</span>
+where <span class="math inline">\(*\)</span> denotes concatenation and the constant path acts as identity.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-13" class="theorem"><strong>Theorem 1.1  </strong></span><span class="math inline">\(\pi_1(X, x_0)\)</span> is a <strong>group</strong> under this operation, with:</p>
+<ul>
+<li><strong>Neutral element:</strong> <span class="math inline">\([c]\)</span>, where <span class="math inline">\(c\)</span> is the constant loop at <span class="math inline">\(x_0\)</span>.</li>
+<li><strong>Inverse:</strong> For <span class="math inline">\([\sigma]\)</span>, the inverse is <span class="math inline">\([\sigma^{-1}]\)</span>, where
+<span class="math display">\[
+\sigma^{-1}(t) = \sigma(1 - t).
+\]</span></li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span></p>
+<ul>
+<li>Closedness</li>
+<li><strong>Associvity</strong>: NTS: $([][]) [] =<a href="%5B\beta%5D%20%5B\gamma%5D"></a> $.<br />
+First note that We need to show $() () $
+<span class="math display">\[\begin{align*}
+(\alpha \beta)(s) &amp;:=
+\begin{cases}
+\alpha(2s), &amp; 0 \le s \le \tfrac{1}{2}, \\[6pt]
+\beta(2s - 1), &amp; \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+(\alpha \beta)\gamma(s) &amp;:=\begin{cases}
+\alpha\beta(2s), &amp; 0 \le s \le \tfrac{1}{2}, \\[6pt]
+\gamma(2s - 1), &amp; \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+&amp;:=\begin{cases}
+\alpha(4s), &amp; 0 \le s \le \tfrac{1}{4}, \\[6pt]
+\beta(4s - 1), &amp; \tfrac{1}{4} \le s \le \frac{1}{2} .\\[6pt]
+\gamma(2s - 1), &amp; \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+\end{align*}\]</span></li>
+</ul>
+<p>We picture these paths by the diagrams,</p>
+</div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.svg" alt="" width="672" /></p>
+<p>The diagrams can be used to obtain the algebraic descriptions of the paths in
+question quite easily. For example, consider <span class="math inline">\((\alpha * \beta) * \gamma\)</span>. When
+t &lt; $ we use <span class="math inline">\(\beta\)</span> and compose it with a linear function
+that changes the interval <span class="math inline">\([\tfrac14, \tfrac12]\)</span> to <span class="math inline">\([0,1]\)</span>, namely</p>
+<p><span class="math display">\[
+t \mapsto 4t - 1.
+\]</span></p>
+<p>In fact, any continuous function from <span class="math inline">\([\tfrac14, \tfrac12]\)</span> to <span class="math inline">\([0,1]\)</span> which
+sends <span class="math inline">\(\tfrac14\)</span> to <span class="math inline">\(0\)</span> and <span class="math inline">\(\tfrac12\)</span> to <span class="math inline">\(1\)</span> will do ,
+but it is usually easiest to choose a linear function.</p>
+<ul>
+<li><strong>Idenitity</strong>: NTS: <span class="math inline">\([c_{x_0}][\sigma]= [\sigma]\)</span> for all <span class="math inline">\(\sigma \in \Pi_1(X,x_0)\)</span><br />
+We need to show <span class="math inline">\(c_{x_0}\sigma\sim\sigma\)</span> for all <span class="math inline">\(\sigma \in \Pi_1(X,x_0)\)</span><br />
+</li>
+</ul>
+<p>```</p>
 
 </div>
 </div>

@@ -364,3 +364,123 @@ A = X \cup Y,
 and let \(B\) be a topological space. If \(f : A \to B\) is continuous when restricted to both \(X\) and \(Y\), then \(f\) is continuous.
 ```
 
+```{definition}
+Let $X$ b∈topological space and $x_0\in X$. Let $\Pi_1(X,x_0)$ denote the set of homotpy equivalnce classes of loops based at $x_0$. (i.e.: $\sigma I \rightarrow X, \sigma(0)=sigma(1)=x_0$, where homotopy relative to $\{0,1\}$)
+```
+
+```{definition}
+Let \( X \) be a topological space, and let \( x_0 \in X \).
+Define \(\pi_1(X, x_0)\) to be the set of homotopy equivalence classes of loops based at \( x_0 \) (i.e., maps
+\(\alpha : I \to X \quad \text{with } \alpha(0) = \alpha(1) = x_0,\)
+where homotopy is taken **rel** \( \{0,1\} \)).
+```
+i.e.: 
+\begin{align*}
+\Pi(X,x_0) &= \left\{ [\sigma]: \sigma \text{ is a loop at }x_0\right\}, \text{ where. }\\
+& [\sigma]=\left\{\alpha: \sigma \text{ is a loop at }x_0 \text{ and } \sigma \sim \alpha\right\}
+\end{align*}
+
+<center>
+![](fig/fig8.png){width=30%}
+</center>
+
+```{remark}
+The previous lemma shows that concatenation gives a well-defined binary operation on \(\pi_1(X, x_0)\)
+\[
+[\sigma][\tau] \mapsto [\sigma * \tau],
+\]
+where \( * \) denotes concatenation and the constant path acts as identity.
+
+```
+
+```{theorem}
+\(\pi_1(X, x_0)\) is a **group** under this operation, with:
+  
+- **Neutral element:** \([c]\), where \( c \) is the constant loop at \( x_0 \).
+- **Inverse:** For \([\sigma]\), the inverse is \([\sigma^{-1}]\), where
+\[
+\sigma^{-1}(t) = \sigma(1 - t).
+\]
+
+```
+
+
+```{proof}
+- Closedness
+- **Associvity**: NTS: $([\alpha][\beta]) [\gamma] =[\alpha]([\beta] [\gamma]) $.\
+First note that We need to show $(\alpha\beta) \gamma \sim \alpha(\beta\gamma) $
+\begin{align*}
+(\alpha \beta)(s) &:=
+\begin{cases}
+\alpha(2s), & 0 \le s \le \tfrac{1}{2}, \\[6pt]
+\beta(2s - 1), & \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+(\alpha \beta)\gamma(s) &:=\begin{cases}
+\alpha\beta(2s), & 0 \le s \le \tfrac{1}{2}, \\[6pt]
+\gamma(2s - 1), & \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+ &:=\begin{cases}
+\alpha(4s), & 0 \le s \le \tfrac{1}{4}, \\[6pt]
+\beta(4s - 1), & \tfrac{1}{4} \le s \le \frac{1}{2} .\\[6pt]
+\gamma(2s - 1), & \tfrac{1}{2} \le s \le 1 .
+\end{cases}\\
+\end{align*}
+
+We picture these paths by the diagrams,
+
+```{tikz, dev='svg', echo=FALSE}
+\begin{tikzpicture}[x=8cm,y=1cm]
+
+  % Left number line: ((f \circ g) \circ h)
+  \draw (0,0) -- (1,0);
+
+  \foreach \x/\lab in {0/0, 0.25/{\tfrac14}, 0.5/{\tfrac12}, 1/1} {
+    \draw (\x,0.05) -- (\x,-0.05) node[below=2pt] {$\lab$};
+    \fill (\x,0) circle (2pt);
+  }
+
+  \node[above=4pt] at (0.125,0) {$\alpha$};
+  \node[above=4pt] at (0.375,0) {$\beta$};
+  \node[above=4pt] at (0.75,0)  {$\gamma$};
+  \node[below=16pt] at (0.5,0) {$((\alpha  \beta)\gamma )$};
+
+  % Right number line: f \circ (g \circ h)
+  \begin{scope}[yshift=-3cm]
+    \draw (0,0) -- (1,0);
+
+    \foreach \x/\lab in {0/0, 0.5/{\tfrac12}, 0.75/{\tfrac34}, 1/1} {
+      \draw (\x,0.05) -- (\x,-0.05) node[below=2pt] {$\lab$};
+      \fill (\x,0) circle (2pt);
+    }
+
+    \node[above=4pt] at (0.25,0)  {$\alpha$};
+    \node[above=4pt] at (0.625,0) {$\beta$};
+    \node[above=4pt] at (0.875,0) {$\gamma$};
+
+    \node[below=16pt] at (0.5,0) {$(\alpha (\beta\gamma)$};
+  \end{scope}
+
+\end{tikzpicture}
+```
+
+The diagrams can be used to obtain the algebraic descriptions of the paths in
+question quite easily. For example, consider $(\alpha * \beta) * \gamma$. When 
+\tfrac14 \le t < \tfrac12$ we use $\beta$ and compose it with a linear function
+that changes the interval $[\tfrac14, \tfrac12]$ to $[0,1]$, namely
+
+
+\[
+t \mapsto 4t - 1.
+\]
+
+
+In fact, any continuous function from $[\tfrac14, \tfrac12]$ to $[0,1]$ which
+sends $\tfrac14$ to $0$ and $\tfrac12$ to $1$ will do ,
+but it is usually easiest to choose a linear function.
+
+
+- **Idenitity**: NTS: $[c_{x_0}][\sigma]= [\sigma]$ for all $\sigma \in \Pi_1(X,x_0)$\
+We need to show $c_{x_0}\sigma\sim\sigma$ for all $\sigma \in \Pi_1(X,x_0)$\
+
+
+```
